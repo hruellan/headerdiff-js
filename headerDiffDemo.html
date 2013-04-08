@@ -1,0 +1,96 @@
+<html>
+	<header>
+		<script type="text/javascript" src="constants.js">
+		</script>
+		<script type="text/javascript" src="headerDiff.js">
+		</script>
+		<script type="text/javascript" src="demo.js">
+		</script>
+		<style>
+			body {
+				font-family: Helvetica, Arial, sans-serif;
+				font-size: 14px;
+			}
+			p, li {
+				font-size: 14px;
+			}
+		
+			table.result {
+				border: 1px solid #000000;
+				border-collapse: collapse;
+				font-family: Courier;
+				font-size: 14px;
+			}
+			
+			td.result {
+				border: 1px solid #000000;
+				padding: 5px;
+			}
+			
+			td.top {
+				background: wheat;
+				font-weight: bold;
+				text-align: center;
+			}
+			
+			td.center {
+				text-align: center;
+			}
+			
+			td.newSet {
+				background: cornsilk;
+				font-weight: bold;
+			}
+			
+			input {
+			}
+			
+			textarea {
+				font-family: Courier;
+				font-size: 14px;
+			}
+			
+			select {
+			}
+		</style>
+	</header>
+	
+	<body onload="init()">
+		<table>
+			<tr>
+				<td style="vertical-align: top; width: 250px;">
+					<h3>Input Data (JSON)</h3>
+					<textarea id="jsonInput" style="width:25em; height:20em;">
+					</textarea>
+					<p style="text-align: center">
+						<input type="button" value="Encode" onclick="roundTrip()">
+						<input type="button" value="Reset Codec" onclick="reset()">
+					</p>
+					<p style="text-align: center">
+						Header Names Dictionary: <select id="reqResp" onchange="init()">
+							<option value="request" >Request</option>
+							<option value="response">Response</option>
+						</select>
+
+					</p>
+					<h4>Tutorial</h4>
+					<ol>
+						<li>Input a set of headers as JSON data (e.g. <input type="button" value="Sample Request #0" onclick="setSampleRequest(0)">)</li>
+						<li>Check that the appropriate Header Name Dictionary is selected (Request for a request, Response for a response)</li>
+						<li>Click "Encode" button to see how headers are encoded</li>
+						<li>Iterate with other sets of headers (e.g. <input type="button" value="Sample Request #1" onclick="setSampleRequest(1)"> and <input type="button" value="Sample Request #2" onclick="setSampleRequest(2)">) to see the benefits of header indexation</li>
+					</ol>
+					<p style="text-align: justify;">
+						<u>Note</u>: Encoded data is decoded and compared with input data; the result of this
+						comparison is displayed in the "Decoding" column of the table.
+					</p>
+				</td>
+				<td style="vertical-align: top">
+					<h3>HeaderDiff Encoded Data</h3>
+					<table class="result" id="encodedData">
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
