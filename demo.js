@@ -50,6 +50,8 @@ function init() {
 	data+= '<td class="result top">Decoding</td>';
 	data+= "</tr>";
 	document.getElementById('encodedData').innerHTML = data;
+
+	setSampleRequest(0);
 }
 
 function reset() {
